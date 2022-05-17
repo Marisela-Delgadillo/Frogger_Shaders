@@ -40,14 +40,78 @@ class Fondo(Modelo):
                 #Meta
                 -1.0, 1.0,0.0,1.0, 255/255, 243/255, 1/255,1.0,  #izquierda arriba
                 -1.0, 0.9,0.0,1.0,    255/255, 243/255, 1/255,1.0,  #izquierda abajo
-                 1.0, 1.0,0.0,1.0,     255/255, 243/255, 1/255,1.0, #derecha arriba
-                1.0, 0.9,0.0,1.0,    255/255, 243/255, 1/255,1.0 # derecha abajo       
+                1.0, 1.0,0.0,1.0,     255/255, 243/255, 1/255,1.0, #derecha arriba
+                1.0, 0.9,0.0,1.0,    255/255, 243/255, 1/255,1.0, # derecha abajo       
 
                 #Lineas calle
                 -1.0, 1.0,0.0,1.0, 255/255, 243/255, 1/255,1.0,  #izquierda arriba
                 -1.0, 0.9,0.0,1.0,    255/255, 243/255, 1/255,1.0,  #izquierda abajo
-                 1.0, 1.0,0.0,1.0,     255/255, 243/255, 1/255,1.0, #derecha arriba
-                1.0, 0.9,0.0,1.0,    255/255, 243/255, 1/255,1.0 # derecha abajo      
+                1.0, 1.0,0.0,1.0,     255/255, 243/255, 1/255,1.0, #derecha arriba
+                1.0, 0.9,0.0,1.0,    255/255, 243/255, 1/255,1.0, # derecha abajo 
+
+                #Lineas Blancas Calle 1
+                -1.1,0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                -1.1,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                -0.6,0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                -0.6,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                -0.5,0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                -0.5,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                0.1,0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                0.1,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                0.2,0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                0.2,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                0.8,0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                0.8,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                0.9,0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                0.9,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                1.0,0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                1.0,0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                #Lineas Blancas Calle 2
+                -1.5,0.05,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                -1.5,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                -0.9,0.05,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                -0.9,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                -0.8,0.05,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                -0.8,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                -0.2,0.05,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                -0.2,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                -0.1,0.05,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                -0.1,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                0.5,0.05,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                0.5,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                0.6,0.05,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                0.6,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                1.0,0.05,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                1.0,-0.05,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                #Lineas Blancas Calle 3
+                -1.1,-0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                -1.1,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                -0.6,-0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                -0.6,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                -0.5,-0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                -0.5,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                0.1,-0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                0.1,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                0.2,-0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                0.2,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                0.8,-0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                0.8,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
+                0.9,-0.7,0.0, 1.0,       1.0, 1.0, 1.0, 1.0, #izq. arriba
+                0.9,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0, #izq. abajo
+                1.0,-0.7,0.0,1.0,         1.0, 1.0, 1.0, 1.0, #der. arriba
+                1.0,-0.6,0.0,1.0,       1.0, 1.0, 1.0, 1.0,  #der. abajo
+
             ], dtype="float32"
         )
 
@@ -69,9 +133,21 @@ class Fondo(Modelo):
         gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 8, 4)
         gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 12, 4)
         gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 16, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 20, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 24, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 28, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 32, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 36, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 40, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 44, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 48, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 52, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 56, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 60, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 64, 4)
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 68, 4)
 
 
 
         gl.glBindVertexArray(0)
         self.shader.liberar_programa()
-
