@@ -7,6 +7,8 @@ from Modelo import *
 from Triangulo import Triangulo
 from Rana import *
 from Fondo import *
+from Lineas import *
+from Carros import *
 
 SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 700
@@ -15,6 +17,8 @@ modelo = None
 rana = None
 fondo = None
 window = None
+lineas = None
+carros = None
 
 vertex_shader_source = ""
 with open('vertex_shader.glsl') as archivo:
@@ -26,35 +30,29 @@ with open('fragment_shader.glsl') as archivo:
 
 def actualizar():
     global window
-    global rana
-    estado_arriba = glfw.get_key(window, glfw.KEY_UP)
-    estado_abajo = glfw.get_key(window, glfw.KEY_DOWN)
-    estado_derecha = glfw.get_key(window, glfw.KEY_RIGHT)
-    estado_izquierda = glfw.get_key(window, glfw.KEY_LEFT)
-
-    if estado_arriba == glfw.PRESS:
-        rana.mover(rana.ARRIBA)
-    if estado_abajo == glfw.PRESS:
-        rana.mover(rana.ABAJO)
-    if estado_derecha == glfw.PRESS:
-        rana.mover(rana.DERECHA)
-    if estado_izquierda == glfw.PRESS:
-        rana.mover(rana.IZQUIERDA)
+    #rana.actualizar(window)
 
 
 def dibujar():
     global modelo
     global rana
     global fondo
+    global lineas
+    global carros
     #modelo.dibujar()
     fondo.dibujar()
+    lineas.dibujar()
+    carros.dibujar()
     rana.dibujar()
+    
 
 def main():
     global modelo
     global window
     global rana
     global fondo
+    global lineas
+    global carros
     glfw.init()
 
     glfw.window_hint(glfw.CONTEXT_VERSION_MAJOR,3)
@@ -90,9 +88,13 @@ def main():
     fondo = Fondo(shader, 
         posicion_id, color_id, transformaciones_id)
 
-    nave = Nave(shader,
+    lineas = Lineas(shader,
+            posicion_id, color_id, transformaciones_id)
+    
+    carros = Carros(shader,
             posicion_id, color_id, transformaciones_id)
 
+    glfw.set_key_callback(window, rana.actualizar)
     #draw loop
     while not glfw.window_should_close(window):
         gl.glClearColor(0.3,0.3,0.3,1.0)
@@ -110,6 +112,8 @@ def main():
     shader.borrar()
     fondo.borrar()
     rana.borrar()
+    lineas.borrar()
+    carros.borrar()
     
 
 

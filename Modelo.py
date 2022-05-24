@@ -4,7 +4,71 @@ from ctypes import c_void_p
 import glm
 
 class Modelo:
-    def __init__(self, shader, posicion_id, color_id, transformaciones_id):
+
+    @property
+    def posicion_x(self):
+        return self._posicion_x
+    @posicion_x.setter
+    def posicion_x(self, posicion_x):
+        self._posicion_x = posicion_x
+    @property
+    def posicion_y(self):
+        return self._posicion_y
+    @posicion_y.setter
+    def posicion_y(self, posicion_y):
+        self._posicion_y = posicion_y
+    @property
+    def posicion_z(self):
+        return self._posicion_z
+    @posicion_z.setter
+    def posicion_z(self, posicion_z):
+        self._posicion_z = posicion_z
+    @property
+    def velocidad(self):
+        return self._velocidad
+    @velocidad.setter
+    def velocidad(self, velocidad):
+        self._velocidad = velocidad
+    @property
+    def direccion(self):
+        return self._direccion
+    @direccion.setter
+    def direccion(self, direccion):
+        self._direccion = direccion
+    @property
+    def extremo_izquierdo(self):
+        return self._extremo_izquierdo
+    @extremo_izquierdo.setter
+    def extremo_izquierdo(self, extremo_izquierdo):
+        self._extremo_izquierdo = extremo_izquierdo
+    
+    @property
+    def extremo_derecho(self):
+        return self._extremo_derecho
+    @extremo_derecho.setter
+    def extremo_derecho(self, extremo_derecho):
+        self._extremo_derecho = extremo_derecho
+    
+    @property
+    def extremo_superior(self):
+        return self._extremo_superior
+    @extremo_superior.setter
+    def extremo_superior(self, extremo_superior):
+        self._extremo_superior = extremo_superior
+
+    @property
+    def extremo_inferior(self):
+        return self._extremo_inferior
+    @extremo_inferior.setter
+    def extremo_inferior(self, extremo_inferior):
+        self._extremo_inferior = extremo_inferior
+
+    def __init__(self, shader, posicion_id, color_id, transformaciones_id,  posicion_x = 0.0, posicion_y = 0.0, posicion_z = 0.0, velocidad = 0.0, direccion = 0.0):
+        self.posicion.x = posicion_x
+        self.posicion.y = posicion_y
+        self.posicion.z = posicion_z
+        self.velocidad = velocidad
+        self.direccion = direccion
         self.shader = shader
         self.transformaciones_id = transformaciones_id
         #Generar vertex array object y vertex buffer object
