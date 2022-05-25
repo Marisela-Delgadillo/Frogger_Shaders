@@ -20,6 +20,45 @@ window = None
 lineas = None
 carros = None
 
+carros = []
+
+valores_carros = [
+    [0.3, -0.85, 0.0, 0.9, 2.0],
+    [0.8, -0.75, 0.0, 0.4, 3.0],
+    [-0.4, -0.65, 0.0, 0.6, 3.0],
+    [-0.8, -0.55, 0.0, 0.9, 2.0],
+    [0.7, -0.45, 0.0, 0.5, 3.0],
+    [-0.2, -0.55, 0.0, 1.0, 3.0],
+    [-0.3, -0.25, 0.0, 0.7, 2.0],
+    [-0.6, -0.15, 0.0, 0.9, 2.0],
+    [-0.2, -0.05, 0.0, 1.5, 2.0],
+    [0.5, 0.05, 0.0, 0.7, 3.0],
+    [0.3, 0.15, 0.0, 0.9, 3.0],
+    [0.7, 0.25, 0.0, 0.4, 2.0],
+    [0.9, 0.75, 0.0, 0.5, 3.0],
+    [0.2, 0.45, 0.0, 0.8, 3.0],
+    [-0.4, 0.55, 0.0, 0.9, 2.0],
+    [0.5, 0.75, 0.0, 0.5, 2.0],
+    [0.2, 0.85, 0.0, 1.9, 3.0],
+    [0.5, -0.85, 0.0, 0.4, 2.0],
+    [0.5, -0.75, 0.0, 0.6, 3.0],
+    [-0.9, -0.65, 0.0, 1.4, 3.0],
+    [0.8, -0.55, 0.0, 0.5, 2.0],
+    [0.9, -0.45, 0.0, 0.6, 3.0],
+    [-0.8, -0.85, 0.0, 0.7, 3.0],
+    [-0.2, -0.15, 0.0, 0.5, 2.0],
+    [-0.5, -0.05, 0.0, 0.9, 2.0],
+    [0.9, 0.05, 0.0, 0.3, 2.0],
+    [0.7, 0.15, 0.0, 0.8, 3.0],
+    [0.2, 0.25, 0.0, 0.9, 3.0],
+    [0.7, 0.65, 0.0, 0.5, 2.0],
+    [0.5, 0.45, 0.0, 0.8, 3.0],
+    [-0.5, 0.55, 0.0, 0.9, 3.0],
+    [-0.3, 0.65, 0.0, 0.6, 2.0],
+    [0.8, 0.75, 0.0, 0.5, 2.0],
+    [0.1, 0.85, 0.0, 0.9, 3.0]
+]
+
 vertex_shader_source = ""
 with open('vertex_shader.glsl') as archivo:
     vertex_shader_source = archivo.readlines()
@@ -27,6 +66,16 @@ with open('vertex_shader.glsl') as archivo:
 fragment_shader_source = ""
 with open('fragment_shader.glsl') as archivo:
     fragment_shader_source = archivo.readlines()
+
+def inicializar_carros(shader, 
+            posicion_id, color_id, transformaciones_id):
+    for i in range (34):
+        posicion_x=valores_carros[i][0]
+        posicion_y=valores_carros[i][1]
+        posicion_z=valores_carros[i][2]
+        velocidad=valores_carros[i][3]
+        direccion=valores_carros[i][4]
+        carros.append(Carros(shader,posicion_id, color_id, transformaciones_id, posicion_x, posicion_y, posicion_z, velocidad, direccion))
 
 def actualizar():
     global window
@@ -42,7 +91,9 @@ def dibujar():
     #modelo.dibujar()
     fondo.dibujar()
     lineas.dibujar()
-    carros.dibujar()
+    #carros.dibujar()
+    for carro in carros:
+        carro.dibujar()
     rana.dibujar()
     
 
@@ -91,7 +142,10 @@ def main():
     lineas = Lineas(shader,
             posicion_id, color_id, transformaciones_id)
     
-    carros = Carros(shader,
+    # carros = Carros(shader,
+    #         posicion_id, color_id, transformaciones_id)
+
+    inicializar_carros(shader,
             posicion_id, color_id, transformaciones_id)
 
     glfw.set_key_callback(window, rana.actualizar)
