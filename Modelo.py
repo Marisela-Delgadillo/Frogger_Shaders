@@ -93,13 +93,20 @@ class Modelo:
             c_void_p(4 * self.vertices.itemsize))
         gl.glEnableVertexAttribArray(color_id)
 
-
-
         gl.glBindBuffer(gl.GL_ARRAY_BUFFER, 0)
         gl.glBindVertexArray(0)
-
-
 
     def borrar(self):
         gl.glDeleteVertexArrays(1, self.VAO)
         gl.glDeleteBuffers(1, self.VBO)
+    
+    def colisionando(self, modelo):
+        #assert isinstance(modelo, Modelo)
+        colisionando = False
+        if (self.posicion.x + self.extremo_derecho >= modelo.posicion.x - modelo.extremo_izquierdo 
+            and self.posicion.x - self.extremo_izquierdo <= modelo.posicion.x + modelo.extremo_derecho 
+            and self.posicion.y + self.extremo_superior >= modelo.posicion.y - modelo.extremo_inferior
+            and self.posicion.y - self.extremo_inferior <= modelo.posicion.y + modelo.extremo_superior):
+            
+            colisionando = True 
+        return colisionando

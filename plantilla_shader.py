@@ -9,6 +9,8 @@ from Rana import *
 from Fondo import *
 from Lineas import *
 from Carros import *
+from Carros2 import *
+from Nube import *
 
 SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 700
@@ -19,45 +21,53 @@ fondo = None
 window = None
 lineas = None
 carros = None
+carros2 = None
+nube = None
+
+tiempo_anterior = 0.0
 
 carros = []
+carros2 = []
 
 valores_carros = [
     [0.3, -0.85, 0.0, 0.9, 2.0],
-    [0.8, -0.75, 0.0, 0.4, 3.0],
-    [-0.4, -0.65, 0.0, 0.6, 3.0],
     [-0.8, -0.55, 0.0, 0.9, 2.0],
-    [0.7, -0.45, 0.0, 0.5, 3.0],
-    [-0.2, -0.55, 0.0, 1.0, 3.0],
     [-0.3, -0.25, 0.0, 0.7, 2.0],
     [-0.6, -0.15, 0.0, 0.9, 2.0],
     [-0.2, -0.05, 0.0, 1.5, 2.0],
-    [0.5, 0.05, 0.0, 0.7, 3.0],
-    [0.3, 0.15, 0.0, 0.9, 3.0],
-    [0.7, 0.25, 0.0, 0.4, 2.0],
-    [0.9, 0.75, 0.0, 0.5, 3.0],
-    [0.2, 0.45, 0.0, 0.8, 3.0],
+    [0.7, 0.25, 0.0, 0.4, 2.0], 
     [-0.4, 0.55, 0.0, 0.9, 2.0],
-    [0.5, 0.75, 0.0, 0.5, 2.0],
-    [0.2, 0.85, 0.0, 1.9, 3.0],
-    [0.5, -0.85, 0.0, 0.4, 2.0],
-    [0.5, -0.75, 0.0, 0.6, 3.0],
-    [-0.9, -0.65, 0.0, 1.4, 3.0],
-    [0.8, -0.55, 0.0, 0.5, 2.0],
-    [0.9, -0.45, 0.0, 0.6, 3.0],
-    [-0.8, -0.85, 0.0, 0.7, 3.0],
+    [0.5, 0.75, 0.0, 0.5, 2.0], 
+    [0.5, -0.85, 0.0, 0.4, 2.0], 
+    [0.8, -0.55, 0.0, 0.5, 2.0], 
     [-0.2, -0.15, 0.0, 0.5, 2.0],
     [-0.5, -0.05, 0.0, 0.9, 2.0],
     [0.9, 0.05, 0.0, 0.3, 2.0],
+    [0.7, 0.65, 0.0, 0.5, 2.0],
+    [-0.3, 0.65, 0.0, 0.6, 2.0],
+    [0.8, 0.75, 0.0, 0.5, 2.0]
+]
+
+valores_carros2 = [
+    [0.8, -0.75, 0.0, 0.4, 3.0],
+    [-0.4, -0.65, 0.0, 0.6, 3.0],
+    [0.7, -0.45, 0.0, 0.5, 3.0],
+    [-0.2, -0.55, 0.0, 1.0, 3.0],
+    [0.5, 0.05, 0.0, 0.7, 3.0],
+    [0.3, 0.15, 0.0, 0.9, 3.0],
+    [0.9, 0.75, 0.0, 0.5, 3.0],
+    [0.2, 0.45, 0.0, 0.8, 3.0],
+    [0.2, 0.85, 0.0, 1.9, 3.0],
+    [0.5, -0.75, 0.0, 0.6, 3.0],
+    [-0.9, -0.65, 0.0, 1.4, 3.0],
+    [0.9, -0.45, 0.0, 0.6, 3.0],
+    [-0.8, -0.85, 0.0, 0.7, 3.0],
     [0.7, 0.15, 0.0, 0.8, 3.0],
     [0.2, 0.25, 0.0, 0.9, 3.0],
-    [0.7, 0.65, 0.0, 0.5, 2.0],
-    [0.5, 0.45, 0.0, 0.8, 3.0],
+     [0.5, 0.45, 0.0, 0.8, 3.0],
     [-0.5, 0.55, 0.0, 0.9, 3.0],
-    [-0.3, 0.65, 0.0, 0.6, 2.0],
-    [0.8, 0.75, 0.0, 0.5, 2.0],
     [0.1, 0.85, 0.0, 0.9, 3.0]
-]
+    ]
 
 vertex_shader_source = ""
 with open('vertex_shader.glsl') as archivo:
@@ -69,17 +79,45 @@ with open('fragment_shader.glsl') as archivo:
 
 def inicializar_carros(shader, 
             posicion_id, color_id, transformaciones_id):
-    for i in range (34):
+    for i in range (16):
         posicion_x=valores_carros[i][0]
         posicion_y=valores_carros[i][1]
         posicion_z=valores_carros[i][2]
         velocidad=valores_carros[i][3]
         direccion=valores_carros[i][4]
+        #print(posicion_x, posicion_y, posicion_z, velocidad, direccion)
         carros.append(Carros(shader,posicion_id, color_id, transformaciones_id, posicion_x, posicion_y, posicion_z, velocidad, direccion))
+    
+def inicializar_carros2(shader, 
+            posicion_id, color_id, transformaciones_id):
+    for i in range (18):
+        posicion_x=valores_carros2[i][0]
+        posicion_y=valores_carros2[i][1]
+        posicion_z=valores_carros2[i][2]
+        velocidad=valores_carros2[i][3]
+        direccion=valores_carros2[i][4]
+        #print(posicion_x, posicion_y, posicion_z, velocidad, direccion)
+        carros2.append(Carros2(shader,posicion_id, color_id, transformaciones_id, posicion_x, posicion_y, posicion_z, velocidad, direccion))
 
 def actualizar():
     global window
+    global tiempo_anterior
+    tiempo_actual = glfw.get_time()
+    tiempo_delta = tiempo_actual - tiempo_anterior
+
+    for carro in carros:
+        carro.actualizar(tiempo_delta)
+        if carro.colisionando(rana):
+            glfw.set_window_should_close(window, 1)
+    for carro2 in carros2:
+        carro2.actualizar(tiempo_delta)
+        if carro2.colisionando(rana):
+            glfw.set_window_should_close(window, 1)
     #rana.actualizar(window)
+    nube.actualizar(tiempo_delta)
+    tiempo_anterior = tiempo_actual
+
+    
 
 
 def dibujar():
@@ -88,13 +126,19 @@ def dibujar():
     global fondo
     global lineas
     global carros
+    global carros2
+    global nube
     #modelo.dibujar()
     fondo.dibujar()
     lineas.dibujar()
     #carros.dibujar()
     for carro in carros:
         carro.dibujar()
+    for carro2 in carros2:
+        carro2.dibujar()
     rana.dibujar()
+    nube.dibujar()
+
     
 
 def main():
@@ -104,6 +148,8 @@ def main():
     global fondo
     global lineas
     global carros
+    global carros2
+    global nube
     glfw.init()
 
     glfw.window_hint(glfw.CONTEXT_VERSION_MAJOR,3)
@@ -142,10 +188,15 @@ def main():
     lineas = Lineas(shader,
             posicion_id, color_id, transformaciones_id)
     
+    nube = Nube(shader,
+            posicion_id, color_id, transformaciones_id)
+    
     # carros = Carros(shader,
     #         posicion_id, color_id, transformaciones_id)
 
     inicializar_carros(shader,
+            posicion_id, color_id, transformaciones_id)
+    inicializar_carros2(shader,
             posicion_id, color_id, transformaciones_id)
 
     glfw.set_key_callback(window, rana.actualizar)
@@ -162,12 +213,13 @@ def main():
         glfw.poll_events()
 
     #Liberar memoria
-    modelo.borrar()
+    #modelo.borrar()
     shader.borrar()
     fondo.borrar()
     rana.borrar()
     lineas.borrar()
     carros.borrar()
+    carros2.borrar()
     
 
 
