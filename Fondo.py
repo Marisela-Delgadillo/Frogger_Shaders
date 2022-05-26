@@ -248,6 +248,12 @@ class Fondo(Modelo):
 
             self.vertices = np.append(self.vertices, np.array([componente_x, componente_y, 0.0 , 1.0, 
                                                        40/255, 121/255, 17/255, 1.0 ], dtype="float32"))
+        for angulo in range(0, 359, 5):
+            componente_x = 0.04 * math.cos(angulo * math.pi / 180) + 0.2
+            componente_y =  0.025 * math.sin(angulo * math.pi / 180) - 0.35
+
+            self.vertices = np.append(self.vertices, np.array([componente_x, componente_y, 0.0 , 1.0, 
+                                                       40/255, 121/255, 17/255, 1.0 ], dtype="float32"))
 
         self.posicion = glm.vec3(0,0,0)
         self.transformaciones = glm.mat4(1.0)
@@ -298,6 +304,7 @@ class Fondo(Modelo):
         gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 156, 4)
         gl.glDrawArrays(gl.GL_TRIANGLE_FAN, 160, 74)
         gl.glDrawArrays(gl.GL_TRIANGLE_FAN, 234, 70)
+        
 
 
 

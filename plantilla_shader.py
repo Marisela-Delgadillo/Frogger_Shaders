@@ -11,6 +11,7 @@ from Lineas import *
 from Carros import *
 from Carros2 import *
 from Nube import *
+from Decoracion import *
 
 SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 700
@@ -23,6 +24,7 @@ lineas = None
 carros = None
 carros2 = None
 nube = None
+decoracion = None
 
 tiempo_anterior = 0.0
 
@@ -128,6 +130,7 @@ def dibujar():
     global carros
     global carros2
     global nube
+    global decoracion
     #modelo.dibujar()
     fondo.dibujar()
     lineas.dibujar()
@@ -136,6 +139,7 @@ def dibujar():
         carro.dibujar()
     for carro2 in carros2:
         carro2.dibujar()
+    decoracion.dibujar()
     rana.dibujar()
     nube.dibujar()
 
@@ -150,6 +154,7 @@ def main():
     global carros
     global carros2
     global nube
+    global decoracion
     glfw.init()
 
     glfw.window_hint(glfw.CONTEXT_VERSION_MAJOR,3)
@@ -191,6 +196,9 @@ def main():
     nube = Nube(shader,
             posicion_id, color_id, transformaciones_id)
     
+    decoracion = Decoracion(shader,
+            posicion_id, color_id, transformaciones_id)
+    
     # carros = Carros(shader,
     #         posicion_id, color_id, transformaciones_id)
 
@@ -216,6 +224,7 @@ def main():
     #modelo.borrar()
     shader.borrar()
     fondo.borrar()
+    decoracion.borrar()
     rana.borrar()
     lineas.borrar()
     carros.borrar()
